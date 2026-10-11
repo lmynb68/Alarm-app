@@ -1,0 +1,16 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlarmApp", "src\AlarmApp\AlarmApp.csproj", "{9A44CD84-E036-4A31-9177-35986BE23D4B}"
+EndProject
+Global
+ GlobalSection(SolutionConfigurationPlatforms) = preSolution
+  Debug|Any CPU = Debug|Any CPU
+  Release|Any CPU = Release|Any CPU
+ EndGlobalSection
+ GlobalSection(ProjectConfigurationPlatforms) = postSolution
+  {9A44CD84-E036-4A31-9177-35986BE23D4B}.Debug|Any CPU.ActiveCfg = Debug|AnyCPU
+  {9A44CD84-E036-4A31-9177-35986BE23D4B}.Debug|Any CPU.Build.0 = Debug|AnyCPU
+  {9A44CD84-E036-4A31-9177-35986BE23D4B}.Release|Any CPU.ActiveCfg = Release|AnyCPU
+  {9A44CD84-E036-4A31-9177-35986BE23D4B}.Release|Any CPU.Build.0 = Release|AnyCPU
+ EndGlobalSection
+EndGlobal

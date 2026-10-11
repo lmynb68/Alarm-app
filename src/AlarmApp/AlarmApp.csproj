@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+ <PropertyGroup><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProjectGuid>{9A44CD84-E036-4A31-9177-35986BE23D4B}</ProjectGuid><OutputType>WinExe</OutputType><RootNamespace>AlarmApp</RootNamespace><AssemblyName>AlarmApp</AssemblyName><TargetFrameworkVersion>v4.8</TargetFrameworkVersion><ApplicationIcon>../../assets/AppIcon-v1.ico</ApplicationIcon><FileAlignment>512</FileAlignment><AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects></PropertyGroup>
+ <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>bin/Debug/</OutputPath><DefineConstants>DEBUG;TRACE</DefineConstants><WarningLevel>4</WarningLevel></PropertyGroup>
+ <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' "><DebugType>none</DebugType><Optimize>true</Optimize><OutputPath>bin/Release/</OutputPath><DefineConstants>TRACE</DefineConstants><WarningLevel>4</WarningLevel></PropertyGroup>
+ <ItemGroup><Reference Include="System"/><Reference Include="System.Core"/><Reference Include="System.Drawing"/><Reference Include="System.Windows.Forms"/><Reference Include="System.Xml"/></ItemGroup>
+ <ItemGroup><Compile Include="Alarm.cs"/><Compile Include="Properties/AssemblyInfo.cs"/></ItemGroup>
+ <ItemGroup>
+ <Content Include="../../assets/AppIcon-v1.ico"><Link>AppIcon-v1.ico</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+ <Content Include="../../assets/AppIcon.png"><Link>AppIcon.png</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+ <Content Include="../../assets/alarm.wav"><Link>alarm.wav</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+ <Content Include="../../assets/sounds/*.wav"><Link>sounds/%(Filename)%(Extension)</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+ </ItemGroup>
+ <Import Project="$(MSBuildToolsPath)/Microsoft.CSharp.targets"/>
+</Project>

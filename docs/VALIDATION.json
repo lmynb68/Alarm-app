@@ -1,0 +1,13 @@
+{
+  "portableCRCEntries": 10,
+  "setupCRCEntries": 4,
+  "payloadCRCEntries": 12,
+  "portableManifestChecked": 9,
+  "installerManifestChecked": 11,
+  "exeMatchesOriginal": true,
+  "sourceMatchesOriginal": true,
+  "noSourceInRuntime": true,
+  "noPersonalData": true,
+  "installerRuntimeTested": false,
+  "executableSelfTestsRunHere": false
+}

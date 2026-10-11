@@ -1,0 +1,30 @@
+name: Windows build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: microsoft/setup-msbuild@v3
+      - name: Build Visual Studio solution
+        run: msbuild AlarmApp.sln /t:Rebuild /p:Configuration=Release /p:Platform="Any CPU" /verbosity:minimal
+      - name: Upload compiled app
+        uses: actions/upload-artifact@v7
+        with:
+          name: AlarmApp-Windows-build
+          path: src/AlarmApp/bin/Release/
+          if-no-files-found: error
+          retention-days: 14
