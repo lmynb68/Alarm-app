@@ -5,9 +5,7 @@ No Codex, account, internet connection or compiler is required to run the app.
 
 PORTABLE: Extract the entire ZIP, then double-click AlarmApp.exe.
 Keep the icon, WAV and sounds folder beside the EXE.
-INSTALLER: Extract the setup ZIP, then double-click Install.cmd.
-Installs for the current user, creates shortcuts and adds an uninstall entry.
-No administrator rights or automatic startup configuration are required.
+No installer is provided. Extract and run the portable app.
 
 FEATURES
 Scheduled alarms; weekday repeats; custom finite interval/count;
@@ -23,12 +21,10 @@ User settings, imported sounds and history are in:
 %LOCALAPPDATA%\IndependentAlarm
 Existing history is not bundled, and no records before the logging feature
 was introduced can be recovered. Multiple alarms accumulate separately.
-Uninstalling keeps this data. Portable and installed copies share this data.
+Deleting the extracted program folder does not delete this user-data folder.
 
-INSTALLER UNINSTALL: Use Windows installed-app settings or the Start menu
-entry Uninstall AlarmApp. Exit the app from the tray first.
-PORTABLE UNINSTALL: Exit the app, then delete the extracted program folder.
+REMOVE PORTABLE APP: Exit the app, then delete the extracted program folder.
 
-This release is unsigned. Installation/uninstallation has not been exercised
-in the Codex build environment. The included application EXE comes from a
-successful local build; native build logs and hashes were checked.
+This release is unsigned. The included EXE comes from a successful local build;
+package hashes and archive integrity were checked. Actual ringing and tray
+behavior still need manual verification.

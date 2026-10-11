@@ -5,9 +5,8 @@ try {
     $repo = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
     $artifacts = Join-Path $repo 'artifacts'
     $portable = Join-Path $artifacts 'AlarmApp-1.0.0-Portable.zip'
-    $setup = Join-Path $artifacts 'AlarmApp-1.0.0-Setup.zip'
     $checksums = Join-Path $artifacts 'SHA256SUMS.txt'
-    foreach ($file in @($portable,$setup,$checksums)) { if (-not (Test-Path -LiteralPath $file)) { throw 'Release files are missing. Run Build.cmd first.' } }
+    foreach ($file in @($portable,$checksums)) { if (-not (Test-Path -LiteralPath $file)) { throw 'Release files are missing. Run Build.cmd first.' } }
     $cli = Get-Command gh.exe -ErrorAction SilentlyContinue
     if (-not $cli) { throw 'GitHub CLI is required for publishing. Download it from https://cli.github.com/ or publish the files on GitHub manually.' }
     & $cli.Source auth status 1>$null 2>$null
@@ -46,10 +45,8 @@ Scheduled alarms, finite interval reminders, WAV/MP3 sounds, English/Simplified 
 [Download the latest release](../../releases/latest)
 
 - Portable ZIP: extract all files and run AlarmApp.exe.
-- Setup ZIP: extract all files and run Install.cmd.
 - Requires Windows desktop and .NET Framework 4.8 or later.
 - Runs independently of Codex. No account or internet connection is needed after download.
-- The setup package is a current-user script-based installer with shortcuts and uninstall support.
 - Releases are unsigned. See the release notes for verification scope.
 
 This repository distributes binary packages. Source reuse licensing has not been selected.
@@ -64,7 +61,7 @@ This repository distributes binary packages. Source reuse licensing has not been
     & $cli.Source api ('repos/'+$full+'/contents/README.md') --method PUT --input $request 1>$null
     if ($LASTEXITCODE -ne 0) { throw 'Could not update the download README.' }
     }
-    & $cli.Source release create v1.0.0 $portable $setup $checksums --repo $full --title 'AlarmApp 1.0.0 for Windows' --notes-file (Join-Path $repo 'docs/GITHUB_RELEASE.md')
+    & $cli.Source release create v1.0.0 $portable $checksums --repo $full --title 'AlarmApp 1.0.0 for Windows' --notes-file (Join-Path $repo 'docs/GITHUB_RELEASE.md')
     if ($LASTEXITCODE -ne 0) { throw 'Release publication failed.' }
     & $cli.Source release view v1.0.0 --repo $full --json url --jq .url
     if ($LASTEXITCODE -ne 0) { throw 'Release was submitted but its URL could not be verified.' }
