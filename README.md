@@ -1,100 +1,82 @@
-<!-- alarmapp-download-repository -->
-<p align="center"><img src="assets/AppIcon.png" width="88" alt="AlarmApp icon"></p>
+# 闹钟 · Alarm
 
-# Alarm-app · 闹钟
+支持 Windows 和 Android 的闹钟应用，包含定时提醒、间隔提醒、世界时钟、秒表、倒计时和闹钟使用记录。可独立运行，无需账号。
 
-一个独立运行的 Windows / Android 闹钟应用，支持定时与间隔提醒、世界时钟、秒表、倒计时、应用内音量调节和使用记录查询。使用者不需要 Codex 或账号。
-
-[下载与版本发布](https://github.com/lmynb68/Alarm-app/releases) · [问题反馈](https://github.com/lmynb68/Alarm-app/issues) · [VS Code 上传说明](docs/VISUAL_STUDIO.md)
-
-> 普通用户从 Releases 下载 Windows 便携 ZIP 或 Android APK；开发者从仓库获取源码。是否有可下载版本，以 Releases 页面为准。
+[下载版本](https://github.com/lmynb68/Alarm-app/releases) · [反馈问题](https://github.com/lmynb68/Alarm-app/issues)
 
 ## 功能
 
-- 定时闹钟：单次或按星期重复，支持读取当前时间，精确到秒。
-- 间隔提醒：自定义间隔和次数，例如每 5 分钟响一次，共 12 次。
-- 响铃操作：停止、5 分钟后提醒；关闭主窗口后留在托盘运行。
-- 铃声：5 种内置声音，每个闹钟独立选择，支持导入 WAV / MP3 和试听。
-- 世界时钟：添加、移除城市或时区，显示当地日期和时间。
-- 计时：秒表显示分、秒和毫秒；倒计时支持暂停继续，到时响铃。
-- 响铃音量：应用内调节并保存，适用于铃声和试听。
-- 界面语言：简体中文 / English，切换后记住选择。
-- 简要统计：按月、按类型查看计时使用时长、使用次数和响铃时长。
-- 详细记录：按天查看名称、闹钟类型、开始结束时间和持续时长。
+- 闹钟：单次或按星期重复，设置精确到秒，可直接填入当前时间。
+- 间隔提醒：自定义间隔与总次数，例如每5分钟提醒一次，共12次；第一次在一个间隔后响铃。
+- 铃声：5种内置声音，支持 WAV、MP3 自定义铃声、试听和应用内音量调节。
+- 世界时钟：添加、移除时区，查看当地日期与时间。安卓支持按城市/时区英文名称搜索，Windows 使用系统时区列表。
+- 秒表：显示累计分钟、秒和毫秒，支持开始、暂停、继续和重置。
+- 倒计时：按分钟设置时长，支持暂停、继续、重置，到时响铃。
+- 使用记录：简要页按月统计，详细页按日查询闹钟名称、类型、使用时段和响铃时长。
+- 语言：简体中文和 English，可在应用内切换。
 
-## 下载安装
+## 下载与运行
 
-安卓需要 Android 8.0 或以上。下载 APK 后安装，在首页允许闹钟与提醒、通知等权限；具体见 [安卓使用与构建说明](android/README.md)。当前 APK 为调试签名测试包。
+仓库保存源码。可下载文件以 [Releases 页面的附件](https://github.com/lmynb68/Alarm-app/releases)为准；源码更新不代表安装包已同步更新。
 
+| 平台 | 环境 | 使用方式 |
+| --- | --- | --- |
+| Windows | Windows 10/11，.NET Framework 4.8 | 下载便携 ZIP，完整解压后运行 AlarmApp.exe，保留铃声与图标资源。 |
+| Android | Android 8.0 及以上 | 下载 APK 并安装，根据首页提示授予闹钟、通知等权限。 |
 
-需要 Windows 10 / 11 桌面环境及 .NET Framework 4.8 或更高版本。
+Windows 当前采用便携版，无需安装，不自动设置开机启动。关闭窗口后在托盘运行；退出程序、注销或关机后不会响铃。睡眠唤醒依赖设备与电源设置。更新前请从托盘退出旧程序。
 
-| 下载文件 | 使用方式 |
-| --- | --- |
-| AlarmApp-1.0.0-Portable.zip | 完整解压，然后双击 AlarmApp.exe；保留声音和图标资源。 |
-| SHA256SUMS.txt | 用于检查便携包的 SHA-256。 |
+安卓通过系统闹钟调度，关闭应用页面不会取消启用的提醒。关机不响铃；系统强行停止应用后需要重新打开。部分设备需要允许后台运行。安卓倒计时显示在闹钟列表中，使用已有响铃界面。当前构建的 APK 为调试签名，正式发布签名尚待配置。
 
-只提供便携版：解压即可运行，无需安装。程序不会自动设置开机启动。
+音量设置范围为0–100%，实际声音同时受系统音量影响。Windows 秒表与倒计时状态仅保留在当前运行会话中，退出程序后不恢复。
 
-更新或删除程序文件前，从托盘退出已运行的闹钟。关机、注销和退出程序后不会响铃；睡眠唤醒取决于硬件与 Windows 电源设置。当前发行包未进行代码签名。
+## 数据和统计
 
-## 数据与统计口径
+- Windows：数据保存在 %LOCALAPPDATA%/IndependentAlarm。删除解压目录不会删除该处设置、铃声与历史。
+- Android：数据保存在应用私有目录。卸载应用或清除数据会删除设置、导入铃声与历史。
+- 两端数据独立保存，当前没有同步功能。
 
-设置、导入的铃声和历史记录保存在 %LOCALAPPDATA%/IndependentAlarm，发行包不包含维护者的个人记录，删除解压目录不会删除该处用户数据。
+统计中的“使用时长”指闹钟启用会话，**不是秒表计时记录或应用屏幕使用时间**。Windows 统计启用且程序运行的时间；安卓统计保持启用的经过时间，关闭页面、关机或强行停止期间也可能纳入该会话。
 
-计时使用时长是闹钟启用且程序运行的时间；多个闹钟分别累计。使用次数是查询期间有计时时长的启用会话数。响铃时长是响铃窗口打开至停止或稍后提醒的时间。跨日、跨月按日期分摊；测试响铃不计入历史。历史从启用记录功能开始积累，不补造旧记录。
+多个闹钟分别累计，跨日、跨月按查询区间裁剪。会话数是该期间有启用时长的会话数，试听不计入记录，删除闹钟保留历史。Windows 倒计时不计入闹钟历史；安卓倒计时作为单次定时闹钟记录。历史从该功能启用后产生，不补录过去的数据。
 
-## 用 Visual Studio Code 开发
+## 从源码构建
 
-1. 克隆 https://github.com/lmynb68/Alarm-app.git，在 VS Code 中打开仓库文件夹。
-2. 在 Windows 终端运行 Build.cmd，生成便携包；需要 .NET Framework 4.8 环境。
-3. AlarmApp.sln 也可供 Microsoft Visual Studio 使用；这里用户所说的 VS 指 Visual Studio Code。
+### Windows
 
-也可在 Windows 双击 Build.cmd：编译、运行自检并生成 artifacts/ 下的便携包和校验文件。自检失败时不会生成新的发行压缩包。实际响铃与托盘行为仍需要按 [验收清单](docs/TESTING.md) 手动验证。
+在 Windows 下双击仓库根目录的 Build.cmd。脚本编译程序、运行自检，成功后在 artifacts/ 生成便携 ZIP 和 SHA256SUMS.txt。需要 .NET Framework 4.8 环境。
+
+项目包含 AlarmApp.sln，可使用 Microsoft Visual Studio 构建；VS Code 可用于编辑源码和运行构建命令。
+
+### Android
+
+用 Android Studio 打开 android/，配置 JDK 17、Android SDK Platform 35 和 Build Tools 35.0.0。在该目录执行：
+
+```powershell
+.\gradlew.bat testDebugUnitTest lintDebug assembleDebug
+```
+
+APK 位于 android/app/build/outputs/apk/debug/app-debug.apk。详情见 [安卓说明](android/README.md)。本机 SDK 路径、缓存、构建产物和签名密钥不应提交。
 
 ## 项目结构
 
 | 路径 | 内容 |
 | --- | --- |
-| android/ | 原生 Android 项目、Gradle Wrapper、测试与构建说明 |
-| src/AlarmApp/ | C# 源码、项目文件和版本信息 |
-| assets/ | 多尺寸图标与内置铃声 |
-| tools/ | 构建和 GitHub Release 发布脚本 |
-| docs/ | 使用、发布、测试与 VS 上传说明 |
-| .github/ | Windows 构建流程和问题反馈模板 |
-
-编译产物、VS 缓存和个人数据由 .gitignore 排除。ZIP 下载包应上传到 Releases，不提交到源码历史。
-
-## 界面设计参考
-
-以下是 A 方案的概念图，用于说明布局方向；其中数字均为示例，不代表真实使用记录或当前程序的实际截图。
-
-![A 风格界面概念](docs/images/ui-concept-A.png)
+| src/AlarmApp/ | Windows C# 项目 |
+| android/ | Android 项目、Gradle Wrapper 和单元测试 |
+| assets/ | Windows 图标和内置铃声 |
+| tools/ | Windows 构建与发布脚本 |
+| docs/ | Windows 使用与验收说明 |
+| .github/ | 工作流和问题反馈模板 |
 
 ## 验证状态
 
-现有 EXE 的本机构建日志记录了成功编译。发行包已进行 ZIP 回读、CRC 与 SHA-256 检查。GitHub Windows 编译已通过；响铃、托盘和休眠唤醒仍需实际使用验证。Windows CI 仅执行解决方案编译，不能替代实际响铃、睡眠唤醒和桌面交互测试。
+2026-10-12 本机构建已通过：Windows 编译及程序自检成功；安卓10项时间规则单元测试通过，lint无错误，APK已生成。单元测试不等同于界面或实际响铃验收，音量调节、倒计时、后台与锁屏行为仍需按设备实测。
+
+[Windows 验收清单](docs/TESTING.md) · [Android 验收清单](android/TESTING.md)
 
 ## 反馈与许可
 
-通过 Issues 描述复现步骤、操作系统版本和预期行为。分享日志前移除个人信息，不提交自己的闹钟或历史 XML。
+反馈时请说明平台、系统版本、复现步骤和预期结果。日志中请移除个人信息，不上传自己的闹钟数据或签名密钥。仓库尚未指定源码许可证。
 
-源码许可证尚未由维护者选择；当前不标注为 MIT 等已授权开源项目。
-
-## English quick start
-
-Download a ZIP from Releases when available. Extract the portable ZIP and run AlarmApp.exe, Requires Windows desktop and .NET Framework 4.8+. The app works independently of Codex and supports English/Simplified Chinese, scheduled/interval reminders, WAV/MP3 sounds and separate monthly/daily history views.
-
-## 世界时钟与计时
-
-世界时钟可添加、移除系统支持的时区，自动按该时区显示日期、时间和夏令时。安卓以城市/时区 ID 搜索，Windows 以系统时区名称选择；选择列表保存在本地。
-
-计时页包含秒表与倒计时，均支持开始、暂停、继续和重置。安卓倒计时复用精确闹钟服务，退到桌面后仍可提醒，并在闹钟列表中显示；暂停后调整分钟数会重新设定时长。Windows 倒计时可在托盘中继续，完全退出应用后不会响铃；Windows 秒表和倒计时状态仅保留在当前应用会话中。安卓秒表记录经过时间，手动修改系统时间会影响计数。
-
-2026-10-12 新增功能已通过完整构建：Windows 自检通过，安卓10项测试通过、lint无错误。界面与新增计时功能仍需实机验收。
-
-## Android 开发
-
-用 Android Studio 打开 android/，配置 JDK 17、SDK 35、Build Tools 35.0.0。在该目录运行 `gradlew.bat testDebugUnitTest lintDebug assembleDebug`，或执行 BuildAndroid.cmd。本机工具链、缓存、local.properties、签名密钥和 APK 均不提交。
-
-项目地址：https://github.com/lmynb68/Alarm-app 。感谢收藏！
+项目地址：[lmynb68/Alarm-app](https://github.com/lmynb68/Alarm-app)。感谢收藏！
