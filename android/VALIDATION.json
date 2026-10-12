@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-12",
+  "status": "github-help-footer-build-passed-device-validation-pending",
+  "checks": {
+    "javaDelimiterChecks": 14,
+    "javaCompilerExecuted": true,
+    "resourceReferencesResolved": true,
+    "manifestClassesResolved": true,
+    "gradleWrapperOfficialSHA256Matches": true,
+    "unitTestsAuthored": 10,
+    "unitTestsExecuted": true,
+    "androidLintExecuted": true,
+    "apkProduced": true,
+    "deviceTestsExecuted": false,
+    "unitTestsPassed": 10,
+    "unitTestExecution": "Gradle testDebugUnitTest: 10 tests, 0 failures, 0 errors, 0 skipped",
+    "javaCompilationScope": "Full Gradle Android compilation, resource linking and APK packaging",
+    "androidLintPassed": true,
+    "apkCurrentSourceVerified": true,
+    "lintWarnings": 7
+  },
+  "limitations": [
+    "GitHub address and thank-you footer compiled and packaged; displayed help text requires runtime visual verification."
+  ],
+  "sources": [
+    {
+      "path": "app/src/main/java/com/lmynb68/alarm/Alarm.java",
+      "sha256": "f944d6548b8ca761a37dfea282fdc891fb70d203aace646fa7b3425b2153030a"
+    },
+    {
+      "path": "app/src/main/java/com/lmynb68/alarm/AlarmApplication.java",
+      "sha256": "566e2f94a5ac6aecf6614983f53945d1392f58ec2d0b7de46e03ccac521aa161"
+    },
+    {
+      "path": "app/src/main/java/com/lmynb68/alarm/AlarmReceiver.java",
+      "sha256": "9e6d653b5ae53ebb3a20ef4c603cb1ff48b6e19c2f5c21ddc30f98a8ea4d76c9"
+    },
+    {
+      "path": "app/src/main/java/com/lmynb68/alarm/Audio.java",
+      "sha256": "d934ffc4db9504748212a97ee669363ceaeae41f5d1fd2d9f52569530d892aa0"
+    },
+    {
+      "path": "app/src/main/java/com/lmynb68/alarm/Errors.java",
+      "sha256": "efb6d1612727ff304c054bf0afc74f80b22ff5ca089a4f82939b0d9f72e70095"
+    },
+    {
+      "path": "app/src/main/java/com/lmynb68/alarm/MainActivity.java",
+      "sha256": "f74f504602c6f55019a0809492cf9417fe40d1799d49cff12100cb1ce77acca2"
+    },
+    {
+      "path": "app/src/main/java/com/lmynb68/alarm/RestoreReceiver.java",
+      "sha256": "f9d67b434c6cae4d008fdf0243db28c58f987afcb838103e4a090dbe328a024b"
+    },
+    {
+      "path": "app/src/main/java/com/lmynb68/alarm/RingActivity.java",
+      "sha256": "1a24860bff140d4ca53d91f2c1bb35296919682615e6a53dd189618c1daec9e9"
+    },
+    {
+      "path": "app/src/main/java/com/lmynb68/alarm/RingService.java",
+      "sha256": "93a4221ecd6c8f910d1f46ffee8fd4a06ff84172bacb9cc36558f748ec00cdec"
+    },
+    {
+      "path": "app/src/main/java/com/lmynb68/alarm/Scheduler.java",
+      "sha256": "d0bb89af82fe31316b35598032bfff5461e6a57f6b42c2df68787da1e8998d47"
+    },
+    {
+      "path": "app/src/main/java/com/lmynb68/alarm/Store.java",
+      "sha256": "f602a62a489a4e23997f15d49e2527d2125df94d9990ac687f20edf2bfe197af"
+    },
+    {
+      "path": "app/src/main/java/com/lmynb68/alarm/Text.java",
+      "sha256": "2d71024855e45e2e229193560e785f2204ef914b25243ba5a5e2909cc2aa04ff"
+    },
+    {
+      "path": "app/src/main/java/com/lmynb68/alarm/TimeRules.java",
+      "sha256": "0127253eb8a23adb822974f85b411d4848eafa4b5fa277894daccff1a3d9ded0"
+    },
+    {
+      "path": "app/src/test/java/com/lmynb68/alarm/TimeRulesTest.java",
+      "sha256": "7ab69c7288d5abcf9ff7f21a6405250ae418ee0a57d4a7f98a24fdf518dd72e6"
+    }
+  ],
+  "environment": {
+    "androidStudio": "Installed; existing IDE retained",
+    "jdkVersion": "17.0.20+101",
+    "configuredJdk": ".toolchain/jdk-17",
+    "configuredSdk": ".toolchain/android-sdk",
+    "sdkPlatforms": [
+      "android-35"
+    ],
+    "buildTools": [
+      "35.0.0"
+    ],
+    "originalUserSdkPreserved": true,
+    "avdConfigured": true,
+    "deviceConnectionVerified": false
+  },
+  "apk": {
+    "path": "../../AlarmApp-Android-Release/AlarmApp-Android-1.0.0-Debug.apk",
+    "sha256": "36f14d865db8ac3134b44ec5b123f0554d6ce3e1b84920890fc4b26f538e2ad7",
+    "bytes": 891189,
+    "buildFinished": "2026-10-12T18:35:45.6328500+08:00",
+    "signing": "debug"
+  }
+}

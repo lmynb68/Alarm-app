@@ -30,7 +30,11 @@ try {
     Copy-Item -LiteralPath (Join-Path $repo 'docs\USER_README.txt') -Destination (Join-Path $portable 'README.txt')
     Write-Host 'Running application self-tests...'
     $test=Start-Process -FilePath $exe -ArgumentList '--self-test' -WindowStyle Hidden -Wait -PassThru
-    if ($test.ExitCode -ne 0) { throw 'Self-tests failed; release archives were not generated.' }
+    if ($test.ExitCode -ne 0) {
+        $failure=Join-Path $portable 'self-test-error.log'
+        if(Test-Path -LiteralPath $failure){Copy-Item -LiteralPath $failure -Destination (Join-Path $artifacts 'self-test-error.log') -Force;throw ('Self-tests failed: '+[IO.File]::ReadAllText($failure))}
+        throw ('Self-tests exited with code '+$test.ExitCode+' without a diagnostic log.')
+    }
     Copy-Item -LiteralPath (Join-Path $portable 'verification.txt') -Destination (Join-Path $artifacts 'verification.txt') -Force
     Remove-Item -LiteralPath (Join-Path $portable 'verification.txt')
     foreach ($folder in @($portable)) {

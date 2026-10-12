@@ -1,13 +1,13 @@
 <!-- alarmapp-download-repository -->
 <p align="center"><img src="assets/AppIcon.png" width="88" alt="AlarmApp icon"></p>
 
-# Alarm-app · 实时闹钟
+# Alarm-app · 闹钟
 
-一个独立运行的 Windows 桌面闹钟，支持定时提醒、有限次数的间隔提醒和使用记录查询。使用者不需要 Codex、账号或编译工具。
+一个独立运行的 Windows / Android 闹钟应用，支持定时与间隔提醒、世界时钟、秒表、倒计时、应用内音量调节和使用记录查询。使用者不需要 Codex 或账号。
 
 [下载与版本发布](https://github.com/lmynb68/Alarm-app/releases) · [问题反馈](https://github.com/lmynb68/Alarm-app/issues) · [VS Code 上传说明](docs/VISUAL_STUDIO.md)
 
-> 首个 GitHub Release 尚未发布。仓库源码和发行包是两个不同入口：普通用户下载 Release 中的 ZIP；开发者打开解决方案。
+> 普通用户从 Releases 下载 Windows 便携 ZIP 或 Android APK；开发者从仓库获取源码。是否有可下载版本，以 Releases 页面为准。
 
 ## 功能
 
@@ -15,11 +15,17 @@
 - 间隔提醒：自定义间隔和次数，例如每 5 分钟响一次，共 12 次。
 - 响铃操作：停止、5 分钟后提醒；关闭主窗口后留在托盘运行。
 - 铃声：5 种内置声音，每个闹钟独立选择，支持导入 WAV / MP3 和试听。
+- 世界时钟：添加、移除城市或时区，显示当地日期和时间。
+- 计时：秒表显示分、秒和毫秒；倒计时支持暂停继续，到时响铃。
+- 响铃音量：应用内调节并保存，适用于铃声和试听。
 - 界面语言：简体中文 / English，切换后记住选择。
 - 简要统计：按月、按类型查看计时使用时长、使用次数和响铃时长。
 - 详细记录：按天查看名称、闹钟类型、开始结束时间和持续时长。
 
 ## 下载安装
+
+安卓需要 Android 8.0 或以上。下载 APK 后安装，在首页允许闹钟与提醒、通知等权限；具体见 [安卓使用与构建说明](android/README.md)。当前 APK 为调试签名测试包。
+
 
 需要 Windows 10 / 11 桌面环境及 .NET Framework 4.8 或更高版本。
 
@@ -50,6 +56,7 @@
 
 | 路径 | 内容 |
 | --- | --- |
+| android/ | 原生 Android 项目、Gradle Wrapper、测试与构建说明 |
 | src/AlarmApp/ | C# 源码、项目文件和版本信息 |
 | assets/ | 多尺寸图标与内置铃声 |
 | tools/ | 构建和 GitHub Release 发布脚本 |
@@ -70,10 +77,24 @@
 
 ## 反馈与许可
 
-通过 Issues 描述复现步骤、Windows 版本和预期行为。分享日志前移除个人信息，不提交自己的闹钟或历史 XML。
+通过 Issues 描述复现步骤、操作系统版本和预期行为。分享日志前移除个人信息，不提交自己的闹钟或历史 XML。
 
 源码许可证尚未由维护者选择；当前不标注为 MIT 等已授权开源项目。
 
 ## English quick start
 
 Download a ZIP from Releases when available. Extract the portable ZIP and run AlarmApp.exe, Requires Windows desktop and .NET Framework 4.8+. The app works independently of Codex and supports English/Simplified Chinese, scheduled/interval reminders, WAV/MP3 sounds and separate monthly/daily history views.
+
+## 世界时钟与计时
+
+世界时钟可添加、移除系统支持的时区，自动按该时区显示日期、时间和夏令时。安卓以城市/时区 ID 搜索，Windows 以系统时区名称选择；选择列表保存在本地。
+
+计时页包含秒表与倒计时，均支持开始、暂停、继续和重置。安卓倒计时复用精确闹钟服务，退到桌面后仍可提醒，并在闹钟列表中显示；暂停后调整分钟数会重新设定时长。Windows 倒计时可在托盘中继续，完全退出应用后不会响铃；Windows 秒表和倒计时状态仅保留在当前应用会话中。安卓秒表记录经过时间，手动修改系统时间会影响计数。
+
+2026-10-12 新增功能已通过完整构建：Windows 自检通过，安卓10项测试通过、lint无错误。界面与新增计时功能仍需实机验收。
+
+## Android 开发
+
+用 Android Studio 打开 android/，配置 JDK 17、SDK 35、Build Tools 35.0.0。在该目录运行 `gradlew.bat testDebugUnitTest lintDebug assembleDebug`，或执行 BuildAndroid.cmd。本机工具链、缓存、local.properties、签名密钥和 APK 均不提交。
+
+项目地址：https://github.com/lmynb68/Alarm-app 。感谢收藏！
